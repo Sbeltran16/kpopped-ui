@@ -2,20 +2,16 @@ export default function fetcher(
   url: URL | RequestInfo,
   init?: RequestInit | undefined
 ) {
-  const localAuthHeader = localStorage.getItem("authtoken");
-  const authHeader = !!localAuthHeader && { Authorization: localAuthHeader };
-
   return fetch(url, {
-    ...init,
     headers: {
       "Content-Type": "application/json",
-      ...(authHeader || undefined),
       ...init?.headers,
     },
+    ...init,
   }).then((r) => {
-    const authHeader = r.headers.get("authorization");
+    const authHeader = r.headers.get("authorization") || "";
 
-    if (authHeader) {
+    if (!localStorage.getItem("authToken") && authHeader) {
       localStorage.setItem("authToken", authHeader);
     }
 

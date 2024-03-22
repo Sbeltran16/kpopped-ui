@@ -1,7 +1,25 @@
 import React from "react";
 import { StyledNavbar, NavLink } from "./index.css";
+import { useUser } from "../../../context/user";
 
 export default function ButtonAppBar() {
+  function RightSideNavItem() {
+    const { user } = useUser();
+
+    return (
+      <div>
+        {!user ? (
+          <>
+            <NavLink to="/signup">Sign Up</NavLink>
+            <span>|</span>
+            <NavLink to="/login">Log In</NavLink>
+          </>
+        ) : (
+          <span>Hi, {user.username}</span>
+        )}
+      </div>
+    );
+  }
   return (
     <StyledNavbar position="static">
       {/* left side of app bar*/}
@@ -10,11 +28,7 @@ export default function ButtonAppBar() {
       </div>
 
       {/* right side of app bar*/}
-      <div>
-        <NavLink to="/login">Login</NavLink>
-        <span>|</span>
-        <NavLink to="/signup">Signup</NavLink>
-      </div>
+      <RightSideNavItem />
     </StyledNavbar>
   );
 }

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
 const StyledFormBox = styled(Box)`
-  margin: 5rem;
+  margin: 4rem;
   margin-left: 13rem;
   margin-right: 5rem;
   padding: 2rem;

@@ -14,7 +14,7 @@ export default function LoginForm() {
         md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography component="h2" variant="h4" align="center">
+        <Typography variant="h2" align="center">
           Kpopped!
         </Typography>
       </Grid>
@@ -25,7 +25,7 @@ export default function LoginForm() {
           <Typography component="h1" variant="h5">
             Log In
           </Typography>
-          <Box component="form" noValidate>
+          <Box component="form">
             <TextInput
               margin="normal"
               required
@@ -42,7 +42,6 @@ export default function LoginForm() {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
             />
             <Button
               type="submit"

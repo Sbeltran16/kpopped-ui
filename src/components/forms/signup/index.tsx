@@ -1,17 +1,25 @@
 import React from "react";
-import {
-  Link,
-  Button,
-  FormControlLabel,
-  Checkbox,
-  Box,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Link, Button, Box, Grid, Typography, Stack } from "@mui/material";
 import TextInput from "../../inputs/text-input";
 import { StyledFormBox } from "./index.css";
+import { Controller, useForm } from "react-hook-form";
+import useSignUp from "../../../api/signup/hooks/use-signup";
+
+export interface SignUpFormValues {
+  username: string;
+  email: string;
+  password: string;
+}
 
 export default function SignupForm() {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpFormValues>();
+
+  const onSubmit = (data: SignUpFormValues) => signup(data);
+  const { signup, data, isLoading, error } = useSignUp();
   return (
     <Grid container component="main">
       {/* Left side */}
@@ -22,7 +30,7 @@ export default function SignupForm() {
         md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography component="h2" variant="h4" align="center">
+        <Typography variant="h2" align="center">
           Kpopped!
         </Typography>
       </Grid>
@@ -30,41 +38,54 @@ export default function SignupForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
-          <Box component="form" noValidate>
-            <TextInput
-              required
-              label="username"
-              placeholder="kpopFan1234"
-              fullWidth
-              id="username"
+          <Typography variant="h5">Sign Up</Typography>
+          <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              control={control}
               name="username"
+              render={({ field: { onChange, onBlur, ref } }) => (
+                <TextInput
+                  required
+                  fullWidth
+                  label="Username"
+                  placeholder="kpopFan1234"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
-            <TextInput
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
+            <Controller
+              control={control}
               name="email"
+              render={({ field: { onChange, onBlur, ref } }) => (
+                <TextInput
+                  required
+                  fullWidth
+                  label="Email Address"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
-            <TextInput
-              margin="normal"
-              required
-              fullWidth
+            <Controller
+              control={control}
               name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              render={({ field: { onChange, onBlur, ref } }) => (
+                <TextInput
+                  required
+                  fullWidth
+                  label="Password"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
             <Button
-              type="submit"
-              fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              fullWidth
+              sx={{ alignSelf: "center ", margin: "0.5rem 0rem" }}
+              type="submit"
+              value="Submit"
             >
               Sign Up
             </Button>
