@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { AppBar } from "@mui/material";
 import { Link } from "react-router-dom";
-import React from "react";
 
 const StyledNavbar = styled(AppBar)`
   display: flex;

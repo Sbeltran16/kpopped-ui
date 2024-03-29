@@ -24,7 +24,7 @@ export default function ButtonAppBar() {
     <StyledNavbar position="static">
       {/* left side of app bar*/}
       <div>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/home">Home</NavLink>
       </div>
 
       {/* right side of app bar*/}

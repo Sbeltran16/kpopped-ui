@@ -2,8 +2,24 @@ import React from "react";
 import { Link, Button, Box, Grid, Typography } from "@mui/material";
 import TextInput from "../../inputs/text-input";
 import { StyledFormBox } from "../signup/index.css";
+import { Controller, useForm } from "react-hook-form";
+import useLogin from "../../../api/login/hooks/use-login";
+
+export interface LoginFormValues {
+  email: string;
+  password: string;
+}
 
 export default function LoginForm() {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>();
+
+  const onSubmit = (data: LoginFormValues) => login(data);
+  const { login } = useLogin();
+
   return (
     <Grid container component="main">
       {/* Left side */}
@@ -25,23 +41,34 @@ export default function LoginForm() {
           <Typography component="h1" variant="h5">
             Log In
           </Typography>
-          <Box component="form">
-            <TextInput
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
+          <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              control={control}
               name="email"
+              render={({ field: { onChange, onBlur, ref } }) => (
+                <TextInput
+                  required
+                  fullWidth
+                  label="Email Address"
+                  placeholder="exapmle@gmail.com"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
-            <TextInput
-              margin="normal"
-              required
-              fullWidth
+            <Controller
+              control={control}
               name="password"
-              label="Password"
-              type="password"
-              id="password"
+              render={({ field: { onChange, onBlur, ref } }) => (
+                <TextInput
+                  required
+                  fullWidth
+                  label="Password"
+                  placeholder="********"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
+              )}
             />
             <Button
               type="submit"

@@ -3,11 +3,11 @@ export default function fetcher(
   init?: RequestInit | undefined
 ) {
   return fetch(url, {
+    ...init,
     headers: {
       "Content-Type": "application/json",
       ...init?.headers,
     },
-    ...init,
   }).then((r) => {
     const authHeader = r.headers.get("authorization") || "";
 

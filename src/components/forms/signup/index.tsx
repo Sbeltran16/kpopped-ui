@@ -19,7 +19,7 @@ export default function SignupForm() {
   } = useForm<SignUpFormValues>();
 
   const onSubmit = (data: SignUpFormValues) => signup(data);
-  const { signup, data, isLoading, error } = useSignUp();
+  const { signup } = useSignUp();
   return (
     <Grid container component="main">
       {/* Left side */}

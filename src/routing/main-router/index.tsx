@@ -1,14 +1,14 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
 import Home from "../../pages/home";
 import Login from "../../pages/login";
 import Signup from "../../pages/signup";
 import { UserProvider } from "../../context/user";
+import useMe from "../../api/users/hooks/use-me";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <Home />,
   },
   {
@@ -21,10 +21,18 @@ const router = createBrowserRouter([
   },
 ]);
 
+function UserLoginWrapper({ children }: { children: React.ReactNode }) {
+  useMe();
+
+  return <>{children}</>;
+}
+
 export default function MainRouter() {
   return (
     <UserProvider>
-      <RouterProvider router={router} />
+      <UserLoginWrapper>
+        <RouterProvider router={router} />
+      </UserLoginWrapper>
     </UserProvider>
   );
 }
