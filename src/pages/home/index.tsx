@@ -3,8 +3,10 @@ import MainLayout from "../../components/layout/main";
 import RunwayContainer from "../../components/surface/runway/index.css";
 import Post from "../../components/forms/post";
 import { Box } from "@mui/material";
+import useIndexPosts from "../../api/posts/index/hooks/use-index-posts";
 
 export default function Home() {
+  const { data } = useIndexPosts();
   return (
     <MainLayout>
       <RunwayContainer>
