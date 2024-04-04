@@ -9,11 +9,11 @@ export default function useMe() {
   const authorizationHeader = localStorage.getItem("authToken") || "";
   const { updateUser } = useUser();
 
-  return useSWR(meEndpoint, (url) =>
+  return useSWR(authorizationHeader ? meEndpoint : undefined, (url) =>
     fetcher(url, {
       headers: { Authorization: authorizationHeader },
-    }).then(({ data }) => {
-      updateUser(data);
+    }).then((response) => {
+      updateUser(response.data);
     })
   );
 }
