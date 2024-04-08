@@ -11,7 +11,7 @@ export default function useCreatePost() {
   const fetchObject = {
     method: "POST",
     body: JSON.stringify({
-      post: postData?.post,
+      post: { post: postData?.post },
     }),
   };
 

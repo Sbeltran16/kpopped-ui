@@ -7,9 +7,9 @@ const meEndpoint = `${HOST}/me`;
 
 export default function useMe() {
   const authorizationHeader = localStorage.getItem("authToken") || "";
-  const { updateUser } = useUser();
+  const { user, updateUser } = useUser();
 
-  return useSWR(authorizationHeader ? meEndpoint : undefined, (url) =>
+  return useSWR(authorizationHeader && !user ? meEndpoint : undefined, (url) =>
     fetcher(url, {
       headers: { Authorization: authorizationHeader },
     }).then((response) => {

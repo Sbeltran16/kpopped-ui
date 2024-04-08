@@ -6,5 +6,5 @@ import { PostsIndexResponse } from "./types/posts-index-response";
 const postEndpoint = `${HOST}/posts`;
 
 export default function useIndexPosts() {
-  return useSWR<PostsIndexResponse>(postEndpoint, fetcher);
+  return useSWR<{ data: PostsIndexResponse[] }>(postEndpoint, fetcher);
 }
