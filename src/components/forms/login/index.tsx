@@ -11,11 +11,7 @@ export interface LoginFormValues {
 }
 
 export default function LoginForm() {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormValues>();
+  const { control, handleSubmit } = useForm<LoginFormValues>();
 
   const onSubmit = (data: LoginFormValues) => login(data);
   const { login } = useLogin();

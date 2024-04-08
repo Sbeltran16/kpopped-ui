@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Card from "..";
 
 export const StyledPostCard = styled.div`
   border: 1px solid #f3f3f3;

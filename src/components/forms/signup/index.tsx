@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Button, Box, Grid, Typography, Stack } from "@mui/material";
+import { Link, Button, Box, Grid, Typography } from "@mui/material";
 import TextInput from "../../inputs/text-input";
 import { StyledFormBox } from "./index.css";
 import { Controller, useForm } from "react-hook-form";
@@ -12,11 +12,7 @@ export interface SignUpFormValues {
 }
 
 export default function SignupForm() {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignUpFormValues>();
+  const { control, handleSubmit } = useForm<SignUpFormValues>();
 
   const onSubmit = (data: SignUpFormValues) => signup(data);
   const { signup } = useSignUp();
