@@ -1,3 +1,2 @@
-// normally in a .env file
-
-export const HOST = "http://localhost:3001";
+// config.ts
+export const HOST = process.env.REACT_APP_HOST || "http://localhost:3001";
