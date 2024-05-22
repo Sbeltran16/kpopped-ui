@@ -1,15 +1,29 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import Home from "../../pages/home";
 import Login from "../../pages/login";
 import Signup from "../../pages/signup";
 import { UserProvider } from "../../context/user";
+import ProtectedRoute from "../protected";
 import useMe from "../../api/users/hooks/use-me";
+import Landing from "../../pages/landing";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Landing />,
+  },
+  {
     path: "/home",
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",
@@ -18,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "*",
+    element: <Navigate to="/login" replace />,
   },
 ]);
 
