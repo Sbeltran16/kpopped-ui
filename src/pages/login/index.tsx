@@ -1,5 +1,4 @@
 import React from "react";
-import MainLayout from "../../components/layout/main";
 import LoginForm from "../../components/forms/login";
 import useMe from "../../api/users/hooks/use-me";
 import { useUser } from "../../context/user";
@@ -13,9 +12,5 @@ export default function Login() {
     return <Navigate to="/home" />;
   }
 
-  return (
-    <MainLayout>
-      <LoginForm />
-    </MainLayout>
-  );
+  return <LoginForm />;
 }

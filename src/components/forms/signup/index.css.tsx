@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
+import TextInput from "../../inputs/text-input";
 
 const StyledFormBox = styled(Box)`
-  margin: 4rem;
-  margin-left: 13rem;
-  margin-right: 5rem;
-  padding: 2rem;
+  margin: 3rem;
+  padding: 3rem;
   border-radius: 1.5rem;
   box-shadow: 0rem 0.1875rem 0.9375rem rgba(0, 0, 0, 0.2);
   background-color: white;
@@ -14,4 +13,15 @@ const StyledFormBox = styled(Box)`
   align-items: center;
 `;
 
-export { StyledFormBox };
+const MainSignupGridContainer = styled(Grid)`
+  height: 90vh;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const StyledTextInput = styled(TextInput);
+
+export { StyledFormBox, MainSignupGridContainer };

@@ -4,6 +4,7 @@ import TextInput from "../../inputs/text-input";
 import { StyledFormBox } from "../signup/index.css";
 import { Controller, useForm } from "react-hook-form";
 import useLogin from "../../../api/login/hooks/use-login";
+import { MainLoginGridContainer } from "./index.css";
 
 export interface LoginFormValues {
   email: string;
@@ -17,7 +18,7 @@ export default function LoginForm() {
   const { login } = useLogin();
 
   return (
-    <Grid container component="main">
+    <MainLoginGridContainer>
       {/* Left side */}
       <Grid
         item
@@ -44,7 +45,6 @@ export default function LoginForm() {
               render={({ field: { onChange, onBlur, ref } }) => (
                 <TextInput
                   required
-                  fullWidth
                   label="Email Address"
                   placeholder="exapmle@gmail.com"
                   onChange={onChange}
@@ -58,7 +58,6 @@ export default function LoginForm() {
               render={({ field: { onChange, onBlur, ref } }) => (
                 <TextInput
                   required
-                  fullWidth
                   label="Password"
                   placeholder="********"
                   onChange={onChange}
@@ -84,6 +83,6 @@ export default function LoginForm() {
           </Box>
         </StyledFormBox>
       </Grid>
-    </Grid>
+    </MainLoginGridContainer>
   );
 }

@@ -2,14 +2,14 @@ import styled from "@emotion/styled";
 import { Button, Grid } from "@mui/material";
 
 const StyledLandingButton = styled(Button)`
-  border-radius: 5px;
+  border-radius: 3rem;
   display: flex;
   font-size: 16px;
   text-decoration: none;
 `;
 
 const MainGridContainer = styled(Grid)`
-  height: 70vh;
+  height: 90vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

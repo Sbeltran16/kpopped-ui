@@ -13,9 +13,6 @@ export default function LandingNav() {
       {/* Left side */}
       <Grid
         item
-        xs={12}
-        sm={4}
-        md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Typography variant="h2" align="center">

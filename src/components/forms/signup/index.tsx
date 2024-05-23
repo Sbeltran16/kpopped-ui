@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Button, Box, Grid, Typography } from "@mui/material";
 import TextInput from "../../inputs/text-input";
-import { StyledFormBox } from "./index.css";
+import { MainSignupGridContainer, StyledFormBox } from "./index.css";
 import { Controller, useForm } from "react-hook-form";
 import useSignUp from "../../../api/signup/hooks/use-signup";
 
@@ -17,7 +17,7 @@ export default function SignupForm() {
   const onSubmit = (data: SignUpFormValues) => signup(data);
   const { signup } = useSignUp();
   return (
-    <Grid container component="main">
+    <MainSignupGridContainer>
       {/* Left side */}
       <Grid
         item
@@ -42,7 +42,6 @@ export default function SignupForm() {
               render={({ field: { onChange, onBlur, ref } }) => (
                 <TextInput
                   required
-                  fullWidth
                   label="Username"
                   placeholder="kpopFan1234"
                   onChange={onChange}
@@ -56,7 +55,6 @@ export default function SignupForm() {
               render={({ field: { onChange, onBlur, ref } }) => (
                 <TextInput
                   required
-                  fullWidth
                   label="Email Address"
                   onChange={onChange}
                   onBlur={onBlur}
@@ -69,7 +67,6 @@ export default function SignupForm() {
               render={({ field: { onChange, onBlur, ref } }) => (
                 <TextInput
                   required
-                  fullWidth
                   label="Password"
                   onChange={onChange}
                   onBlur={onBlur}
@@ -95,6 +92,6 @@ export default function SignupForm() {
           </Box>
         </StyledFormBox>
       </Grid>
-    </Grid>
+    </MainSignupGridContainer>
   );
 }
