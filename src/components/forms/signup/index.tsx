@@ -68,6 +68,7 @@ export default function SignupForm() {
                 <TextInput
                   required
                   label="Password"
+                  type="password"
                   onChange={onChange}
                   onBlur={onBlur}
                 />

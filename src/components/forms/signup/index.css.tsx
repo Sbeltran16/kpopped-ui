@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Box, Grid } from "@mui/material";
-import TextInput from "../../inputs/text-input";
 
 const StyledFormBox = styled(Box)`
   margin: 3rem;
@@ -21,7 +20,5 @@ const MainSignupGridContainer = styled(Grid)`
   align-items: center;
   flex-wrap: wrap;
 `;
-
-const StyledTextInput = styled(TextInput);
 
 export { StyledFormBox, MainSignupGridContainer };

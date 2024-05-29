@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { AppBar } from "@mui/material";
+import { AppBar, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const StyledNavbar = styled(AppBar)`
@@ -19,4 +19,17 @@ const NavLink = styled(Link)`
   }
 `;
 
-export { NavLink, StyledNavbar };
+const StyledLogout = styled(Button)`
+  border: none;
+  color: white;
+  padding: 0;
+  margin-left: 2rem;
+  text-transform: none;
+  font-size: 1rem;
+
+  &:hover {
+    color: yellow;
+  }
+`;
+
+export { NavLink, StyledNavbar, StyledLogout };

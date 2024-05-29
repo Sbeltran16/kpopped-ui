@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import {
   ButtonsGridContainer,
   MainGridContainer,
@@ -29,7 +28,7 @@ export default function LandingNav() {
             </StyledLandingButton>
           </Link>
         </Grid>
-        <span> _____or_____ </span>
+        <span style={{ display: "flex", justifyContent: "center" }}>or</span>
         <Grid item>
           <Link to="/login" style={{ textDecoration: "none" }}>
             <StyledLandingButton variant="outlined">

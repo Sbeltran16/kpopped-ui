@@ -60,6 +60,7 @@ export default function LoginForm() {
                   required
                   label="Password"
                   placeholder="********"
+                  type="password"
                   onChange={onChange}
                   onBlur={onBlur}
                 />

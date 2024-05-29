@@ -8,22 +8,13 @@ import Home from "../../pages/home";
 import Login from "../../pages/login";
 import Signup from "../../pages/signup";
 import { UserProvider } from "../../context/user";
-import ProtectedRoute from "../protected";
 import useMe from "../../api/users/hooks/use-me";
 import Landing from "../../pages/landing";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Landing />,
-  },
-  {
     path: "/home",
-    element: (
-      <ProtectedRoute>
-        <Home />
-      </ProtectedRoute>
-    ),
+    element: <Home />,
   },
   {
     path: "/login",
@@ -34,13 +25,21 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
+    path: "/",
+    element: <Landing />,
+  },
+  {
     path: "*",
     element: <Navigate to="/login" replace />,
   },
 ]);
 
 function UserLoginWrapper({ children }: { children: React.ReactNode }) {
-  useMe();
+  const { isLoading } = useMe();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return <>{children}</>;
 }

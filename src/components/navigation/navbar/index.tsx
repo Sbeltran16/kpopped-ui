@@ -1,6 +1,12 @@
 import React from "react";
-import { StyledNavbar, NavLink } from "./index.css";
+import { StyledNavbar, NavLink, StyledLogout } from "./index.css";
 import { useUser } from "../../../context/user";
+import { Button } from "@mui/material";
+
+function handleLogout() {
+  localStorage.removeItem("authToken");
+  window.location.href = "/";
+}
 
 export default function ButtonAppBar() {
   function RightSideNavItem() {
@@ -15,7 +21,10 @@ export default function ButtonAppBar() {
             <NavLink to="/login">Log In</NavLink>
           </>
         ) : (
-          <span>Hi, {user.username}</span>
+          <div>
+            <span>Hi, {user.username}</span>
+            <StyledLogout onClick={handleLogout}>Logout</StyledLogout>
+          </div>
         )}
       </div>
     );
