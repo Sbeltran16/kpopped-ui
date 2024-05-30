@@ -13,7 +13,6 @@ export default function Post() {
     if (!post) return;
 
     createPost({ post });
-    window.location.reload();
   };
 
   return (
