@@ -3,7 +3,13 @@ import { Post } from "../../../forms/post/types/post";
 import { useUser } from "../../../../context/user";
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
-import { StyledPostCard } from "./index.css";
+import {
+  CommentIcon,
+  LikeIcon,
+  PostFooter,
+  StatsIcon,
+  StyledPostCard,
+} from "./index.css";
 import { Typography } from "@mui/material";
 
 export default function PostCard({ data }: { data: Post }) {
@@ -17,8 +23,13 @@ export default function PostCard({ data }: { data: Post }) {
   return (
     <StyledPostCard>
       <Typography variant="caption">@{user?.username}</Typography>
-      <Typography variant="body1">"{data.post}</Typography>
+      <Typography variant="body1">{data.post}</Typography>
       <Typography variant="caption">{formattedDate}</Typography>
+      <PostFooter>
+        <CommentIcon />
+        <LikeIcon />
+        <StatsIcon />
+      </PostFooter>
     </StyledPostCard>
   );
 }

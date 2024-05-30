@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
-export const MyPostFeedWrapper = styled.div`
+const MyPostFeedWrapper = styled.div`
   margin: 1rem 0;
 `;
+
+export { MyPostFeedWrapper };

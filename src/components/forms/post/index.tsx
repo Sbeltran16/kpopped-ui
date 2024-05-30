@@ -13,13 +13,13 @@ export default function Post() {
     if (!post) return;
 
     createPost({ post });
+    window.location.reload();
   };
 
   return (
     <StyledForm>
       <PostField
         fullWidth
-        label="KPost"
         multiline
         onChange={handleOnChange}
         placeholder="Whats On Your Mind?"

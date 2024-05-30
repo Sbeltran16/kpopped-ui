@@ -13,7 +13,7 @@ export default function MyPostFeed() {
 
   return (
     <MyPostFeedWrapper>
-      <Typography variant="h5">My Posts</Typography>
+      <Typography variant="h5">For You</Typography>
       {data.data.map((post) => (
         <PostCard data={post.attributes} key={post.attributes.id} />
       ))}

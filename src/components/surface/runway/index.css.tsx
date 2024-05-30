@@ -6,7 +6,7 @@ const RunwayContainer = styled.div`
   border-top: none;
   height: 100vh;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 540px;
   padding: 1rem;
 `;
 

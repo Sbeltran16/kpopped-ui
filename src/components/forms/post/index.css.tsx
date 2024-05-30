@@ -13,5 +13,7 @@ export const PostField = styled(TextField)`
 `;
 
 export const PostButton = styled(Button)`
-  alogn-self: flex-end;
+  align-self: flex-end;
+  border-radius: 20px;
+  text-transform: none;
 `;
