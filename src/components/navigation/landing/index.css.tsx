@@ -6,6 +6,9 @@ const StyledLandingButton = styled(Button)`
   display: flex;
   font-size: 16px;
   text-decoration: none;
+  text-transform: none;
+  width: 100%;
+  justify-content: center;
 `;
 
 const MainGridContainer = styled(Grid)`
@@ -20,7 +23,7 @@ const MainGridContainer = styled(Grid)`
 const ButtonsGridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 `;
 
 export { StyledLandingButton, MainGridContainer, ButtonsGridContainer };

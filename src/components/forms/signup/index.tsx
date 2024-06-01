@@ -77,7 +77,11 @@ export default function SignupForm() {
             <Button
               variant="contained"
               fullWidth
-              sx={{ alignSelf: "center ", margin: "0.5rem 0rem" }}
+              sx={{
+                alignSelf: "center ",
+                margin: "0.5rem 0rem",
+                textTransform: "none",
+              }}
               type="submit"
               value="Submit"
             >

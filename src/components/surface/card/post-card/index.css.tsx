@@ -18,7 +18,6 @@ const PostFooter = styled.div`
   justify-content: space-evenly;
   padding: 1rem;
   border: none;
-  margin: 1rem;
 `;
 
 const CommentIcon = styled(ChatBubbleOutlineIcon)`
@@ -26,6 +25,7 @@ const CommentIcon = styled(ChatBubbleOutlineIcon)`
   margin: 0;
   display: flex;
   font-size: 1.2rem;
+  color: gray;
 
   &:hover {
     color: blue;
@@ -37,6 +37,7 @@ const LikeIcon = styled(FavoriteBorderOutlinedIcon)`
   margin: 0;
   display: flex;
   font-size: 1.2rem;
+  color: gray;
 
   &:hover {
     color: red;
@@ -48,6 +49,7 @@ const StatsIcon = styled(BarChartOutlinedIcon)`
   margin: 0;
   display: flex;
   font-size: 1.2rem;
+  color: gray;
 
   &:hover {
     color: green;
