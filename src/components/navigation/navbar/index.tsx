@@ -33,7 +33,10 @@ export default function ButtonAppBar() {
     <StyledNavbar position="static">
       {/* left side of app bar*/}
       <div>
-        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/home">
+          <span style={{ color: "#99668F" }}>K</span>popped
+          <span style={{ color: "#669970" }}>!</span>
+        </NavLink>
       </div>
 
       {/* right side of app bar*/}

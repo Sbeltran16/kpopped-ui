@@ -7,12 +7,14 @@ const StyledNavbar = styled(AppBar)`
   flex-flow: row;
   justify-content: space-between;
   padding: 1rem;
+  background-color: black;
 `;
 
 const NavLink = styled(Link)`
   margin: 1rem;
   text-decoration: none;
   color: white;
+  font-size: 20px;
 
   &:hover {
     color: yellow;

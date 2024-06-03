@@ -27,14 +27,17 @@ export default function SignupForm() {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Typography variant="h1" align="center">
-          Kpopped!
+          <span style={{ color: "#99668F" }}>K</span>popped
+          <span style={{ color: "#669970" }}>!</span>
         </Typography>
       </Grid>
 
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography variant="h2">Sign Up</Typography>
+          <Typography variant="h2">
+            <span style={{ color: "#99668F" }}>S</span>ign Up
+          </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <Controller
               control={control}

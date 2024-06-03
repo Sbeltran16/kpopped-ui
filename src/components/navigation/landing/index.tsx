@@ -15,7 +15,8 @@ export default function LandingNav() {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Typography variant="h1" align="center">
-          Kpopped!
+          <span style={{ color: "#99668F" }}>K</span>popped
+          <span style={{ color: "#669970" }}>!</span>
         </Typography>
       </Grid>
 
@@ -23,7 +24,10 @@ export default function LandingNav() {
       <ButtonsGridContainer item>
         <Grid item>
           <Link to="/signup" style={{ textDecoration: "none" }}>
-            <StyledLandingButton variant="contained">
+            <StyledLandingButton
+              variant="contained"
+              sx={{ backgroundColor: "#99668F" }}
+            >
               Sign Up
             </StyledLandingButton>
           </Link>
@@ -31,7 +35,10 @@ export default function LandingNav() {
         <span style={{ display: "flex", justifyContent: "center" }}>or</span>
         <Grid item>
           <Link to="/login" style={{ textDecoration: "none" }}>
-            <StyledLandingButton className="comfortaa-bold" variant="outlined">
+            <StyledLandingButton
+              variant="outlined"
+              sx={{ borderColor: "#669970", color: "#000000" }}
+            >
               Sign In
             </StyledLandingButton>
           </Link>
