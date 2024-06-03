@@ -16,6 +16,10 @@ const theme = createTheme({
       fontFamily: "Comfortaa, sans-serif",
       fontWeight: 700,
     },
+    h3: {
+      fontFamily: "Comfortaa, sans-serif",
+      fontWeight: 700,
+    },
     body1: {
       fontFamily: "Comfortaa, sans-serif",
       fontWeight: 400,

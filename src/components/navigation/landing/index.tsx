@@ -14,7 +14,7 @@ export default function LandingNav() {
         item
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="h1" align="center">
+        <Typography variant="h2" align="center">
           <span style={{ color: "#99668F" }}>K</span>popped
           <span style={{ color: "#669970" }}>!</span>
         </Typography>
