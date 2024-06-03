@@ -26,6 +26,10 @@ const StyledLogout = styled(Button)`
   margin-left: 2rem;
   text-transform: none;
   font-size: 1rem;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 
   &:hover {
     color: yellow;

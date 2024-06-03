@@ -27,7 +27,7 @@ export default function LoginForm() {
         md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="h2" align="center">
+        <Typography variant="h1" align="center">
           Kpopped!
         </Typography>
       </Grid>
@@ -35,7 +35,7 @@ export default function LoginForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h2">
             Log In
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>

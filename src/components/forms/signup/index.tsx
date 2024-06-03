@@ -26,7 +26,7 @@ export default function SignupForm() {
         md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="h2" align="center">
+        <Typography variant="h1" align="center">
           Kpopped!
         </Typography>
       </Grid>
@@ -34,7 +34,7 @@ export default function SignupForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography variant="h5">Sign Up</Typography>
+          <Typography variant="h2">Sign Up</Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <Controller
               control={control}

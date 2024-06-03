@@ -14,7 +14,7 @@ export default function LandingNav() {
         item
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="h2" align="center">
+        <Typography variant="h1" align="center">
           Kpopped!
         </Typography>
       </Grid>
@@ -31,7 +31,7 @@ export default function LandingNav() {
         <span style={{ display: "flex", justifyContent: "center" }}>or</span>
         <Grid item>
           <Link to="/login" style={{ textDecoration: "none" }}>
-            <StyledLandingButton variant="outlined">
+            <StyledLandingButton className="comfortaa-bold" variant="outlined">
               Sign In
             </StyledLandingButton>
           </Link>
