@@ -75,7 +75,10 @@ export default function LoginForm() {
             >
               Log In
             </Button>
-            <Grid container sx={{ justifyContent: "center" }}>
+            <Grid
+              container
+              sx={{ justifyContent: "center", textAlign: "center" }}
+            >
               <Grid item>
                 <Link href="/signup" variant="body2">
                   <Typography>Need to Sign Up?</Typography>
