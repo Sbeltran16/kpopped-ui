@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
+import { SvgIcon } from "@mui/material";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 const StyledPostCard = styled.div`
   border-bottom: 1px solid #d3d3d3;
@@ -18,6 +20,14 @@ const PostFooter = styled.div`
   justify-content: space-evenly;
   padding: 1rem;
   border: none;
+`;
+
+const BaseIcon = styled(SvgIcon)`
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  font-size: 1.2rem;
+  color: gray;
 `;
 
 const CommentIcon = styled(ChatBubbleOutlineIcon)`
@@ -44,6 +54,18 @@ const LikeIcon = styled(FavoriteBorderOutlinedIcon)`
   }
 `;
 
+const DeleteIcon = styled(DeleteOutlineOutlinedIcon)`
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  font-size: 1.2rem;
+  color: gray;
+
+  &:hover {
+    color: red;
+  }
+`;
+
 const StatsIcon = styled(BarChartOutlinedIcon)`
   cursor: pointer;
   margin: 0;
@@ -56,4 +78,11 @@ const StatsIcon = styled(BarChartOutlinedIcon)`
   }
 `;
 
-export { StyledPostCard, PostFooter, CommentIcon, LikeIcon, StatsIcon };
+export {
+  StyledPostCard,
+  PostFooter,
+  CommentIcon,
+  LikeIcon,
+  StatsIcon,
+  DeleteIcon,
+};
