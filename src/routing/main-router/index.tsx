@@ -10,6 +10,7 @@ import Signup from "../../pages/signup";
 import { UserProvider } from "../../context/user";
 import useMe from "../../api/users/hooks/use-me";
 import Landing from "../../pages/landing";
+import Profiles from "../../pages/profiles";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/:username",
+    element: <Profiles />,
   },
   {
     path: "/",
