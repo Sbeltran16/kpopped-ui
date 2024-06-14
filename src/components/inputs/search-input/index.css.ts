@@ -40,4 +40,15 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
-export { Search, SearchIconWrapper, StyledInputBase };
+const ClearIconWrapper = styled("div")`
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export { Search, SearchIconWrapper, StyledInputBase, ClearIconWrapper };
