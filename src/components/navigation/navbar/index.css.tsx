@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import { AppBar, Button } from "@mui/material";
+import { AppBar, Button, InputBase } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const StyledNavbar = styled(AppBar)`
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   background-color: black;
 `;

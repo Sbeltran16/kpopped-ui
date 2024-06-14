@@ -21,8 +21,6 @@ export default function ProfileFeed() {
 
   const user = data?.data;
 
-  console.log("User data:", user);
-
   return (
     <ProfileFeedWrapper>
       <Typography variant="h5">{user.username}'s Profile</Typography>

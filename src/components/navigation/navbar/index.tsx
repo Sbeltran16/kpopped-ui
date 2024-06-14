@@ -1,7 +1,6 @@
-import React from "react";
 import { StyledNavbar, NavLink, StyledLogout } from "./index.css";
 import { useUser } from "../../../context/user";
-import { Button } from "@mui/material";
+import SearchBar from "../../inputs/search-input";
 
 function handleLogout() {
   localStorage.removeItem("authToken");
@@ -21,14 +20,17 @@ export default function ButtonAppBar() {
             <NavLink to="/login">Log In</NavLink>
           </>
         ) : (
-          <div>
-            <span>Hi, {user.username}</span>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <SearchBar />
+            <span style={{ marginLeft: "2rem" }}>Hi, {user.username}</span>
             <StyledLogout onClick={handleLogout}>Logout</StyledLogout>
           </div>
         )}
       </div>
     );
   }
+
+  // Left side of navbar
   return (
     <StyledNavbar position="static">
       {/* left side of app bar*/}
