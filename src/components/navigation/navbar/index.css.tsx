@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { AppBar, Button, InputBase } from "@mui/material";
+import { AppBar, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const StyledNavbar = styled(AppBar)`

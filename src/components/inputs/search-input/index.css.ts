@@ -3,12 +3,12 @@ import { InputBase } from "@mui/material";
 
 const Search = styled("div")`
   position: relative;
-  border-radius: 1.5rem; /* Reduced border-radius */
+  border-radius: 1.5rem;
   background-color: white;
   color: black;
   margin-left: 0;
   width: 100%;
-  height: 2.5rem; /* Set a specific height to make it more narrow */
+  height: 2.5rem;
   @media (min-width: 600px) {
     margin-left: 1rem;
     width: auto;
@@ -16,7 +16,7 @@ const Search = styled("div")`
 `;
 
 const SearchIconWrapper = styled("div")`
-  padding: 0 1rem; /* Reduced padding */
+  padding: 0 1rem;
   height: 100%;
   position: absolute;
   pointer-events: none;

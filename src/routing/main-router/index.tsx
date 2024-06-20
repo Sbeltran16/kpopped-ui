@@ -11,6 +11,7 @@ import { UserProvider } from "../../context/user";
 import useMe from "../../api/users/hooks/use-me";
 import Landing from "../../pages/landing";
 import Profiles from "../../pages/profiles";
+import NotFound from "../../pages/user-not-found";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/:username",
     element: <Profiles />,
+  },
+  {
+    path: "/user-not-found",
+    element: <NotFound />,
   },
   {
     path: "/",
