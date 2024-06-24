@@ -36,7 +36,7 @@ export default function LoginForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography component="h1" variant="h3">
+          <Typography variant="h4">
             <span style={{ color: "#669970" }}>L</span>og In
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>

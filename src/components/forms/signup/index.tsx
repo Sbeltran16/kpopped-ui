@@ -35,7 +35,7 @@ export default function SignupForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography variant="h3">
+          <Typography variant="h4">
             <span style={{ color: "#99668F" }}>S</span>ign Up
           </Typography>
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
