@@ -1,16 +1,26 @@
-// src/pages/profiles/index.tsx
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useUserProfile from "../../api/users/hooks/use-user-profiles";
 import PostCard from "../../components/surface/card/post-card";
 import { Typography } from "@mui/material";
 import { ProfileFeedWrapper } from "./index.css";
 import { Post } from "../../components/forms/post/types/post";
+import FollowButton from "../../components/inputs/follow-button";
+import useFollowStatus from "../../api/follows/status/hooks/use-follow-status";
 
 export default function ProfileFeed() {
   const { username } = useParams();
   const navigate = useNavigate();
   const { data, error } = useUserProfile(username || "");
+  const [isFollowing, setIsFollowing] = useState<boolean>(false);
+
+  const { data: followStatusData } = useFollowStatus(username || "");
+
+  useEffect(() => {
+    if (followStatusData) {
+      setIsFollowing(followStatusData.isFollowing);
+    }
+  }, [followStatusData]);
 
   useEffect(() => {
     if (error && error.status === 404) {
@@ -37,9 +47,14 @@ export default function ProfileFeed() {
   return (
     <ProfileFeedWrapper>
       <Typography variant="h5">{user.username}'s Profile</Typography>
+      <FollowButton
+        isFollowing={isFollowing}
+        followeeId={user.id}
+        onFollowChange={setIsFollowing}
+      />
       <Typography variant="h6">Posts</Typography>
       {user.posts.map((post: Post) => (
-        <PostCard data={post} key={post.id} />
+        <PostCard data={{ ...post, username: user.username }} key={post.id} />
       ))}
     </ProfileFeedWrapper>
   );

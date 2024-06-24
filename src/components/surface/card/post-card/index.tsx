@@ -17,12 +17,12 @@ export default function PostCard({ data }: { data: Post }) {
   const { user } = useUser();
   const { destroyPost } = useDestroyPost();
 
-  console.log(data);
+  const isMyPost = data.user_id === user?.id;
 
   return (
     <StyledPostCard>
       <Typography variant="caption">
-        @{user?.username} -{" "}
+        {isMyPost ? <>@{user?.username} - </> : <>@{data.username} - </>}
         <FormattedDate date={data.created_at} variant="slashed-date" />
       </Typography>
       <Typography variant="body1">{data.post || data.content}</Typography>
@@ -30,7 +30,7 @@ export default function PostCard({ data }: { data: Post }) {
         <CommentIcon />
         <LikeIcon />
         <StatsIcon />
-        <DeleteIcon onClick={() => destroyPost(data)} />
+        {isMyPost && <DeleteIcon onClick={() => destroyPost(data)} />}
       </PostFooter>
     </StyledPostCard>
   );
