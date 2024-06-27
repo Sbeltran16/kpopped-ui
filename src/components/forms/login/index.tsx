@@ -5,17 +5,33 @@ import { StyledFormBox } from "../signup/index.css";
 import { Controller, useForm } from "react-hook-form";
 import useLogin from "../../../api/login/hooks/use-login";
 import { MainLoginGridContainer } from "./index.css";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export interface LoginFormValues {
   email: string;
   password: string;
 }
 
+const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY || "";
+
 export default function LoginForm() {
   const { control, handleSubmit } = useForm<LoginFormValues>();
-
-  const onSubmit = (data: LoginFormValues) => login(data);
   const { login } = useLogin();
+  const [isRecaptchaVerified, setRecaptchaVerified] = React.useState(false);
+
+  const onSubmit = (data: LoginFormValues) => {
+    if (isRecaptchaVerified) {
+      login(data);
+    } else {
+      alert("Please complete the reCAPTCHA verification.");
+    }
+  };
+
+  const handleRecaptchaVerify = (response: string | null) => {
+    if (response) {
+      setRecaptchaVerified(true);
+    }
+  };
 
   return (
     <MainLoginGridContainer>
@@ -47,7 +63,7 @@ export default function LoginForm() {
                 <TextInput
                   required
                   label="Email Address"
-                  placeholder="exapmle@gmail.com"
+                  placeholder="example@gmail.com"
                   onChange={onChange}
                   onBlur={onBlur}
                 />
@@ -67,11 +83,16 @@ export default function LoginForm() {
                 />
               )}
             />
+            <ReCAPTCHA
+              sitekey={RECAPTCHA_SITE_KEY}
+              onChange={handleRecaptchaVerify}
+            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, textTransform: "none" }}
+              disabled={!isRecaptchaVerified}
             >
               Log In
             </Button>
