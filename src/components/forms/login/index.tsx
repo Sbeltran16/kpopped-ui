@@ -12,7 +12,11 @@ export interface LoginFormValues {
   password: string;
 }
 
-const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY || "";
+const RECAPTCHA_SITE_KEY_PROD =
+  process.env.REACT_APP_RECAPTCHA_SITE_KEY_PROD || "";
+
+const RECAPTCHA_SITE_KEY =
+  process.env.NODE_ENV === "production" ? RECAPTCHA_SITE_KEY_PROD : undefined;
 
 export default function LoginForm() {
   const { control, handleSubmit } = useForm<LoginFormValues>();
@@ -20,7 +24,7 @@ export default function LoginForm() {
   const [isRecaptchaVerified, setRecaptchaVerified] = React.useState(false);
 
   const onSubmit = (data: LoginFormValues) => {
-    if (isRecaptchaVerified) {
+    if (isRecaptchaVerified || !RECAPTCHA_SITE_KEY) {
       login(data);
     } else {
       alert("Please complete the reCAPTCHA verification.");
@@ -83,16 +87,18 @@ export default function LoginForm() {
                 />
               )}
             />
-            <ReCAPTCHA
-              sitekey={RECAPTCHA_SITE_KEY}
-              onChange={handleRecaptchaVerify}
-            />
+            {RECAPTCHA_SITE_KEY && (
+              <ReCAPTCHA
+                sitekey={RECAPTCHA_SITE_KEY}
+                onChange={handleRecaptchaVerify}
+              />
+            )}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, textTransform: "none" }}
-              disabled={!isRecaptchaVerified}
+              disabled={!isRecaptchaVerified && !!RECAPTCHA_SITE_KEY}
             >
               Log In
             </Button>
