@@ -15,6 +15,9 @@ export interface LoginFormValues {
 const RECAPTCHA_SITE_KEY_PROD =
   process.env.REACT_APP_RECAPTCHA_SITE_KEY_PROD || "";
 
+const RECAPTCHA_SITE_KEY_LOCAL =
+  process.env.REACT_APP_RECAPTCHA_SITE_KEY_LOCAL || "";
+
 const RECAPTCHA_SITE_KEY =
   process.env.NODE_ENV === "production" ? RECAPTCHA_SITE_KEY_PROD : undefined;
 
