@@ -19,7 +19,9 @@ const RECAPTCHA_SITE_KEY_LOCAL =
   process.env.REACT_APP_RECAPTCHA_SITE_KEY_LOCAL || "";
 
 const RECAPTCHA_SITE_KEY =
-  process.env.NODE_ENV === "production" ? RECAPTCHA_SITE_KEY_PROD : undefined;
+  process.env.NODE_ENV === "production"
+    ? RECAPTCHA_SITE_KEY_PROD
+    : RECAPTCHA_SITE_KEY_LOCAL;
 
 export default function LoginForm() {
   const { control, handleSubmit } = useForm<LoginFormValues>();
@@ -48,7 +50,11 @@ export default function LoginForm() {
         xs={12}
         sm={4}
         md={6}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
         <Typography variant="h2" align="center">
           <span style={{ color: "#99668F" }}>K</span>popped
@@ -107,7 +113,10 @@ export default function LoginForm() {
             </Button>
             <Grid
               container
-              sx={{ justifyContent: "center", textAlign: "center" }}
+              sx={{
+                justifyContent: "center",
+                textAlign: "center",
+              }}
             >
               <Grid item>
                 <Link href="/signup" variant="body2">
