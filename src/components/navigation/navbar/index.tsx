@@ -8,6 +8,19 @@ function handleLogout() {
 }
 
 export default function ButtonAppBar() {
+  // Left side of navbar
+  function LeftSideNavItem() {
+    return (
+      <div>
+        <NavLink to="/home">
+          <span style={{ color: "#99668F" }}>K</span>popped
+          <span style={{ color: "#669970" }}>!</span>
+        </NavLink>
+      </div>
+    );
+  }
+
+  // Right side of navbar
   function RightSideNavItem() {
     const { user } = useUser();
 
@@ -30,18 +43,9 @@ export default function ButtonAppBar() {
     );
   }
 
-  // Left side of navbar
   return (
     <StyledNavbar position="static">
-      {/* left side of app bar*/}
-      <div>
-        <NavLink to="/home">
-          <span style={{ color: "#99668F" }}>K</span>popped
-          <span style={{ color: "#669970" }}>!</span>
-        </NavLink>
-      </div>
-
-      {/* right side of app bar*/}
+      <LeftSideNavItem />
       <RightSideNavItem />
     </StyledNavbar>
   );

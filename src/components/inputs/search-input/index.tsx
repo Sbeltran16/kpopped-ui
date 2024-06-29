@@ -20,7 +20,7 @@ export default function SearchBar() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const navigate = useNavigate();
 
-  const { suggestions, isLoading, isError } = useUserSuggestions(searchQuery);
+  const { suggestions } = useUserSuggestions(searchQuery);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -42,8 +42,6 @@ export default function SearchBar() {
     navigate(`/${username}`);
   };
 
-  console.log(suggestions);
-
   return (
     <form onSubmit={handleSearchSubmit}>
       <Search>
@@ -51,7 +49,7 @@ export default function SearchBar() {
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder="Search…"
+          placeholder="Search"
           inputProps={{ "aria-label": "search" }}
           value={searchQuery}
           onChange={handleSearchChange}

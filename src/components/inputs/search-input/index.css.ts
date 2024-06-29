@@ -9,10 +9,6 @@ const Search = styled("div")`
   margin-left: 0;
   width: 100%;
   height: 2.5rem;
-  @media (min-width: 600px) {
-    margin-left: 1rem;
-    width: auto;
-  }
 `;
 
 const SearchIconWrapper = styled("div")`
@@ -53,18 +49,21 @@ const ClearIconWrapper = styled("div")`
 
 const DropdownMenu = styled("div")`
   position: absolute;
+  align-items: center;
   background: white;
   border: 1px solid #ddd;
   max-height: 200px;
   overflow-y: auto;
-  width: 100%;
+  width: 10%;
   z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px #99668f;
+  border-radius: 1rem;
 `;
 
 const DropdownItem = styled("div")`
   padding: 8px 16px;
   cursor: pointer;
+  color: black;
 
   &:hover {
     background: #f0f0f0;
