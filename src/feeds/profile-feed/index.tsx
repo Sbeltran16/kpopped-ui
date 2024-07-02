@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import useUserProfile from "../../api/users/hooks/use-user-profiles";
 import PostCard from "../../components/surface/card/post-card";
 import { Typography } from "@mui/material";
-import { ProfileFeedWrapper } from "./index.css";
+import { ProfileFeedWrapper, ProfileHeadingWrapper } from "./index.css";
 import { Post } from "../../components/forms/post/types/post";
 import FollowButton from "../../components/inputs/follow-button";
 import useFollowStatus from "../../api/follows/status/hooks/use-follow-status";
@@ -46,12 +46,14 @@ export default function ProfileFeed() {
 
   return (
     <ProfileFeedWrapper>
-      <Typography variant="h5">{user.username}'s Profile</Typography>
-      <FollowButton
-        isFollowing={isFollowing}
-        followeeId={user.id}
-        onFollowChange={setIsFollowing}
-      />
+      <ProfileHeadingWrapper>
+        <Typography variant="h5">{user.username}</Typography>
+        <FollowButton
+          isFollowing={isFollowing}
+          followeeId={user.id}
+          onFollowChange={setIsFollowing}
+        />
+      </ProfileHeadingWrapper>
       <Typography variant="h6">Posts</Typography>
       {user.posts.map((post: Post) => (
         <PostCard data={{ ...post, username: user.username }} key={post.id} />

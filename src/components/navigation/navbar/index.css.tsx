@@ -18,7 +18,7 @@ const NavLink = styled(Link)`
   font-size: 20px;
 
   &:hover {
-    color: yellow;
+    color: #99668f;
   }
 `;
 
@@ -35,7 +35,7 @@ const StyledLogout = styled(Button)`
   font-style: normal;
 
   &:hover {
-    color: yellow;
+    color: #99668f;
   }
 `;
 

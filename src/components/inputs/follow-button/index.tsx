@@ -1,5 +1,6 @@
 import useFollowUser from "../../../api/follows/create/hooks/use-follow-user";
 import useUnfollowUser from "../../../api/follows/destroy/hooks/use-unfollow-user";
+import { StyledFollowButton } from "./index.css";
 
 interface FollowButtonProps {
   isFollowing: boolean;
@@ -25,9 +26,9 @@ const FollowButton = ({
   };
 
   return (
-    <button onClick={handleFollow}>
+    <StyledFollowButton variant="contained" onClick={handleFollow}>
       {isFollowing ? "Unfollow" : "Follow"}
-    </button>
+    </StyledFollowButton>
   );
 };
 
