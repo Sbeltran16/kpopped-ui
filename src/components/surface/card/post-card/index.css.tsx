@@ -45,7 +45,7 @@ const StyledMore = styled.div`
   position: relative;
   display: flex;
   justify-content: flex-end;
-  margin: -2.2rem 0 0 0;
+  margin: -2.2rem 0 0 20rem;
 `;
 
 const StyledPostCard = styled.div`

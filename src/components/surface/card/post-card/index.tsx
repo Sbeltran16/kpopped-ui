@@ -5,7 +5,6 @@ import FormattedDate from "../../../data-display/formatted-date";
 import {
   StatsIcon,
   CommentIcon,
-  DeleteIcon,
   LikeIcon,
   MoreIcon,
 } from "../../../layout/icons/index.css";
@@ -96,6 +95,7 @@ export default function PostCard({ data }: { data: Post }) {
           </DropdownMenu>
         )}
       </StyledMore>
+
       <div>
         <Typography variant="body1">{data.post || data.content}</Typography>
       </div>
