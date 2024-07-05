@@ -49,7 +49,7 @@ const StyledMore = styled.div`
 `;
 
 const StyledPostCard = styled.div`
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid #e9e9e9;
   border-top: none
   display: flex;
   flex-flow: column;

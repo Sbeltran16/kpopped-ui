@@ -23,11 +23,8 @@ import useDestroyPost from "../../../../api/posts/destroy/hooks/use-destroy-post
 export default function PostCard({ data }: { data: Post }) {
   const { user } = useUser();
   const { destroyPost } = useDestroyPost();
-
   const isMyPost = data.user_id === user?.id;
-
   const userProfileUrl = isMyPost ? `/${user?.username}` : `/${data.username}`;
-
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
