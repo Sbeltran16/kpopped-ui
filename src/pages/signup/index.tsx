@@ -3,6 +3,7 @@ import useMe from "../../api/users/hooks/use-me";
 import { useUser } from "../../context/user";
 import { Navigate } from "react-router-dom";
 import SignupForm from "../../components/forms/signup";
+import Footer from "../../components/navigation/footer";
 
 export default function Signup() {
   useMe();
@@ -12,5 +13,10 @@ export default function Signup() {
     return <Navigate to="/home" />;
   }
 
-  return <SignupForm />;
+  return (
+    <>
+      <SignupForm />
+      <Footer />
+    </>
+  );
 }

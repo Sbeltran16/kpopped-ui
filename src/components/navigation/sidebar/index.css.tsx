@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const SidebarContainer = styled.div`
-  width: 16.75rem;
+  width: 12.75rem;
   height: 100%;
   position: fixed;
   left: 0;

@@ -14,11 +14,15 @@ const StyledFormBox = styled(Box)`
 
 const MainSignupGridContainer = styled(Grid)`
   height: 90vh;
-  margin-top: 3rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    height: 80vh;
+    margin-top: 2rem;
+  }
 `;
 
 export { StyledFormBox, MainSignupGridContainer };

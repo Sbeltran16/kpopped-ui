@@ -56,7 +56,7 @@ export default function LoginForm() {
           alignItems: "center",
         }}
       >
-        <Typography variant="h2" align="center">
+        <Typography variant="h3" align="center">
           <span style={{ color: "#99668F" }}>K</span>popped
           <span style={{ color: "#669970" }}>!</span>
         </Typography>
@@ -65,9 +65,12 @@ export default function LoginForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography variant="h4">
-            <span style={{ color: "#669970" }}>L</span>og In
-          </Typography>
+          <div style={{ marginBottom: "1.5rem" }}>
+            <Typography variant="h4">
+              <span style={{ color: "#669970" }}>L</span>
+              og In
+            </Typography>
+          </div>
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <Controller
               control={control}

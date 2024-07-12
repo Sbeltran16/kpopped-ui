@@ -3,7 +3,6 @@ import useSWR from "swr";
 import { SignUpFormValues } from "../../../../components/forms/signup";
 import fetcher from "../../../fetcher";
 import { HOST } from "../../../config";
-import { useUser } from "../../../../context/user";
 
 const signupEndpoint = `${HOST}/signup`;
 
@@ -20,8 +19,6 @@ export default function useSignUp() {
     }),
   };
 
-  const { updateUser } = useUser();
-
   const signup = (data: SignUpFormValues) => setSignupData(data);
 
   const swrObject = useSWR(
@@ -32,10 +29,6 @@ export default function useSignUp() {
     (url) =>
       fetcher(url, fetchObject)
         .then((res) => {
-          const { data } = res;
-
-          updateUser(data);
-
           return res;
         })
         .finally(() => setSignupData(undefined))

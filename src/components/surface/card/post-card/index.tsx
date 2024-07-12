@@ -7,7 +7,7 @@ import {
   CommentIcon,
   LikeIcon,
   MoreIcon,
-} from "../../../layout/icons/index.css";
+} from "../../../../styling/icons/index.css";
 import {
   DropdownItem,
   DropdownMenu,

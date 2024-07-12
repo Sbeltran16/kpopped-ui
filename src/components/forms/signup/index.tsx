@@ -1,5 +1,14 @@
-import React from "react";
-import { Link, Button, Box, Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Link,
+  Button,
+  Box,
+  Grid,
+  Typography,
+  Snackbar,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import TextInput from "../../inputs/text-input";
 import { MainSignupGridContainer, StyledFormBox } from "./index.css";
 import { Controller, useForm } from "react-hook-form";
@@ -13,9 +22,29 @@ export interface SignUpFormValues {
 
 export default function SignupForm() {
   const { control, handleSubmit } = useForm<SignUpFormValues>();
-
-  const onSubmit = (data: SignUpFormValues) => signup(data);
   const { signup } = useSignUp();
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const onSubmit = async (data: SignUpFormValues) => {
+    try {
+      await signup(data);
+      setOpenSnackbar(true);
+    } catch (error) {
+      console.error("Signup failed", error);
+    }
+  };
+
+  const handleCloseSnackbar = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
   return (
     <MainSignupGridContainer>
       {/* Left side */}
@@ -26,7 +55,7 @@ export default function SignupForm() {
         md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="h2" align="center">
+        <Typography variant="h3" align="center">
           <span style={{ color: "#99668F" }}>K</span>popped
           <span style={{ color: "#669970" }}>!</span>
         </Typography>
@@ -35,9 +64,12 @@ export default function SignupForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <Typography variant="h4">
-            <span style={{ color: "#99668F" }}>S</span>ign Up
-          </Typography>
+          <div style={{ marginBottom: "1.5rem" }}>
+            <Typography variant="h4">
+              <span style={{ color: "#99668F" }}>S</span>ign Up
+            </Typography>
+          </div>
+
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <Controller
               control={control}
@@ -103,6 +135,25 @@ export default function SignupForm() {
           </Box>
         </StyledFormBox>
       </Grid>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        message="Account created successfully! You Can Now Log In!"
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleCloseSnackbar}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </MainSignupGridContainer>
   );
 }

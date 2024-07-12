@@ -3,6 +3,7 @@ import LoginForm from "../../components/forms/login";
 import useMe from "../../api/users/hooks/use-me";
 import { useUser } from "../../context/user";
 import { Navigate } from "react-router-dom";
+import Footer from "../../components/navigation/footer";
 
 export default function Login() {
   useMe();
@@ -12,5 +13,10 @@ export default function Login() {
     return <Navigate to="/home" />;
   }
 
-  return <LoginForm />;
+  return (
+    <>
+      <LoginForm />
+      <Footer />
+    </>
+  );
 }

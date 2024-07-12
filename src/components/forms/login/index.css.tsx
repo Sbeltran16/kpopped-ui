@@ -3,11 +3,15 @@ import { Grid } from "@mui/material";
 
 const MainLoginGridContainer = styled(Grid)`
   height: 90vh;
-  margin-top: 3rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    height: 70vh;
+    margin-top: 2rem;
+  }
 `;
 
 export { MainLoginGridContainer };
