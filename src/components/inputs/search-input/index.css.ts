@@ -5,7 +5,7 @@ const Search = styled("div")`
   align-items: center;
   background-color: white;
   border-radius: 1.5rem;
-  border: 3px solid black;
+  border: 2px solid black;
   color: black;
   height: 2.5rem;
   margin-left: 0;

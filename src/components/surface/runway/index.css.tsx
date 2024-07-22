@@ -3,11 +3,10 @@ import styled from "@emotion/styled";
 const RunwayContainer = styled.div`
   border: 1px solid #e9e9e9;
   border-bottom: none;
-  border-left: none;
   border-top: none;
   height: 100vh;
-  margin: 0 7rem;
-  max-width: 650px;
+  margin: 0 12rem;
+  max-width: 550px;
   padding: 1rem;
   overflow-y: auto;
 

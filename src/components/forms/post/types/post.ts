@@ -5,4 +5,6 @@ export type Post = {
   content?: string;
   created_at?: string;
   user_id?: number;
+  like_count?: number;
+  liked_by_current_user?: boolean;
 };

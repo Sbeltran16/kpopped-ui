@@ -1,106 +1,54 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Post } from "../../../forms/post/types/post";
-import { useUser } from "../../../../context/user";
-import FormattedDate from "../../../data-display/formatted-date";
-import {
-  StatsIcon,
-  CommentIcon,
-  LikeIcon,
-  MoreIcon,
-} from "../../../../styling/icons/index.css";
-import {
-  DropdownItem,
-  DropdownMenu,
-  PostFooter,
-  PostHeader,
-  StyledPostCard,
-  UsernameLink,
-  StyledMore,
-} from "./index.css";
+import PostHeaderComponent from "../post-card-header";
+import PostDropdown from "../post-card-dropdown";
+import PostFooterComponent from "../post-card-footer";
+import { StyledPostCard } from "./index.css";
 import { Typography } from "@mui/material";
-import useDestroyPost from "../../../../api/posts/destroy/hooks/use-destroy-posts";
+import useLikePost from "../../../../api/likes/hooks/use-like-posts";
+import useUnlikePost from "../../../../api/likes/hooks/use-unlike-posts";
+import { useLikeStatus } from "../../../../api/likes/hooks/use-like-status";
+import { useUser } from "../../../../context/user";
 
 export default function PostCard({ data }: { data: Post }) {
   const { user } = useUser();
-  const { destroyPost } = useDestroyPost();
-  const isMyPost = data.user_id === user?.id;
-  const userProfileUrl = isMyPost ? `/${user?.username}` : `/${data.username}`;
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { likePost } = useLikePost();
+  const { unlikePost } = useUnlikePost();
+  const { liked: initialLiked, likeCount: initialLikeCount } = useLikeStatus(
+    data.id!
+  );
+
+  const [liked, setLiked] = useState(initialLiked);
+  const [likes, setLikes] = useState(initialLikeCount);
 
   useEffect(() => {
-    const closeDropdown = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-      }
-    };
+    setLiked(initialLiked);
+    setLikes(initialLikeCount);
+  }, [initialLiked, initialLikeCount]);
 
-    if (dropdownOpen) {
-      document.addEventListener("mousedown", closeDropdown);
+  const handleLike = async () => {
+    if (liked) {
+      await unlikePost(data.id!);
+      setLikes((prev: number) => (prev !== undefined ? prev - 1 : 0));
     } else {
-      document.removeEventListener("mousedown", closeDropdown);
+      await likePost(data.id!);
+      setLikes((prev: number) => (prev !== undefined ? prev + 1 : 1));
     }
-
-    return () => {
-      document.removeEventListener("mousedown", closeDropdown);
-    };
-  }, [dropdownOpen]);
-
-  const handleToggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleDeletePost = () => {
-    destroyPost(data);
-    setDropdownOpen(false);
+    setLiked(!liked);
   };
 
   return (
     <StyledPostCard>
-      <PostHeader>
-        <div style={{ marginBottom: "0.5rem" }}>
-          {isMyPost ? (
-            <UsernameLink to={userProfileUrl}>{user?.username}</UsernameLink>
-          ) : (
-            <UsernameLink to={userProfileUrl}>{data.username}</UsernameLink>
-          )}
-        </div>
-        <span style={{ margin: " -0.3rem 0.1rem 0 0.8rem" }}>.</span>
-        <div style={{ color: "gray", marginLeft: "1rem" }}>
-          <FormattedDate date={data.created_at} variant="slashed-date" />
-        </div>
-      </PostHeader>
-      <StyledMore ref={dropdownRef}>
-        <MoreIcon onClick={handleToggleDropdown} />
-        {dropdownOpen && (
-          <DropdownMenu>
-            {isMyPost ? (
-              <DropdownItem
-                onClick={handleDeletePost}
-                style={{ fontSize: "14px" }}
-              >
-                Delete Post
-              </DropdownItem>
-            ) : (
-              <DropdownItem style={{ fontSize: "14px" }}>
-                Follow {data.username}
-              </DropdownItem>
-            )}
-          </DropdownMenu>
-        )}
-      </StyledMore>
-
+      <PostHeaderComponent data={data} />
+      <PostDropdown data={data} user={user} />
       <div>
         <Typography variant="body1">{data.post || data.content}</Typography>
       </div>
-      <PostFooter>
-        <CommentIcon />
-        <LikeIcon />
-        <StatsIcon />
-      </PostFooter>
+      <PostFooterComponent
+        liked={liked}
+        likes={likes}
+        handleLike={handleLike}
+      />
     </StyledPostCard>
   );
 }

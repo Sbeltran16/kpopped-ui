@@ -1,4 +1,4 @@
-import Sidebar from "../../navigation/sidebar";
+import Navbar from "../../navigation/navbar";
 import { MainContent } from "./index.css";
 import MainLayoutInterface from "./types";
 import { useMediaQuery } from "@mui/material";
@@ -9,7 +9,7 @@ export default function MainLayout({ children }: MainLayoutInterface) {
 
   return (
     <>
-      {isMobile ? <MobileNavbar /> : <Sidebar />}
+      {isMobile ? <MobileNavbar /> : <Navbar />}
       <MainContent>{children}</MainContent>
     </>
   );

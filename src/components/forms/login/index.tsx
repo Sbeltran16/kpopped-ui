@@ -5,41 +5,18 @@ import { StyledFormBox } from "../signup/index.css";
 import { Controller, useForm } from "react-hook-form";
 import useLogin from "../../../api/login/hooks/use-login";
 import { MainLoginGridContainer } from "./index.css";
-import ReCAPTCHA from "react-google-recaptcha";
 
 export interface LoginFormValues {
   email: string;
   password: string;
 }
 
-const RECAPTCHA_SITE_KEY_PROD =
-  process.env.REACT_APP_RECAPTCHA_SITE_KEY_PROD || "";
-
-const RECAPTCHA_SITE_KEY_LOCAL =
-  process.env.REACT_APP_RECAPTCHA_SITE_KEY_LOCAL || "";
-
-const RECAPTCHA_SITE_KEY =
-  process.env.NODE_ENV === "production"
-    ? RECAPTCHA_SITE_KEY_PROD
-    : RECAPTCHA_SITE_KEY_LOCAL;
-
 export default function LoginForm() {
   const { control, handleSubmit } = useForm<LoginFormValues>();
   const { login } = useLogin();
-  const [isRecaptchaVerified, setRecaptchaVerified] = React.useState(false);
 
   const onSubmit = (data: LoginFormValues) => {
-    if (isRecaptchaVerified || !RECAPTCHA_SITE_KEY) {
-      login(data);
-    } else {
-      alert("Please complete the reCAPTCHA verification.");
-    }
-  };
-
-  const handleRecaptchaVerify = (response: string | null) => {
-    if (response) {
-      setRecaptchaVerified(true);
-    }
+    login(data);
   };
 
   return (
@@ -65,7 +42,7 @@ export default function LoginForm() {
       {/* Right side */}
       <Grid item xs={12} sm={8} md={5}>
         <StyledFormBox>
-          <div style={{ marginBottom: "1.5rem" }}>
+          <div style={{ marginBottom: "1.4rem" }}>
             <Typography variant="h4">
               <span style={{ color: "#669970" }}>L</span>
               og In
@@ -99,18 +76,11 @@ export default function LoginForm() {
                 />
               )}
             />
-            {RECAPTCHA_SITE_KEY && (
-              <ReCAPTCHA
-                sitekey={RECAPTCHA_SITE_KEY}
-                onChange={handleRecaptchaVerify}
-              />
-            )}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, textTransform: "none" }}
-              disabled={!isRecaptchaVerified && !!RECAPTCHA_SITE_KEY}
             >
               Log In
             </Button>

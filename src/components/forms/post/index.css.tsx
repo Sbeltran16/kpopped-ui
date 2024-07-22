@@ -10,10 +10,12 @@ export const StyledForm = styled.form`
 
 export const PostField = styled(TextField)`
   margin-bottom: 1rem;
+  background-color: #e9e9e9;
 `;
 
 export const PostButton = styled(Button)`
   align-self: flex-end;
   border-radius: 20px;
   text-transform: none;
+  background-color: #669970;
 `;
