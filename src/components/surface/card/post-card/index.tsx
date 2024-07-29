@@ -19,20 +19,20 @@ export default function PostCard({ data }: { data: Post }) {
   );
 
   const [liked, setLiked] = useState(initialLiked);
-  const [likes, setLikes] = useState(initialLikeCount);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
 
   useEffect(() => {
     setLiked(initialLiked);
-    setLikes(initialLikeCount);
+    setLikeCount(initialLikeCount);
   }, [initialLiked, initialLikeCount]);
 
   const handleLike = async () => {
     if (liked) {
       await unlikePost(data.id!);
-      setLikes((prev: number) => (prev !== undefined ? prev - 1 : 0));
+      setLikeCount((prev: number) => (prev !== undefined ? prev - 1 : 0));
     } else {
       await likePost(data.id!);
-      setLikes((prev: number) => (prev !== undefined ? prev + 1 : 1));
+      setLikeCount((prev: number) => (prev !== undefined ? prev + 1 : 1));
     }
     setLiked(!liked);
   };
@@ -46,7 +46,7 @@ export default function PostCard({ data }: { data: Post }) {
       </div>
       <PostFooterComponent
         liked={liked}
-        likes={likes}
+        likes={likeCount}
         handleLike={handleLike}
       />
     </StyledPostCard>

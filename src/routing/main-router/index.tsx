@@ -12,6 +12,7 @@ import useMe from "../../api/users/hooks/use-me";
 import Landing from "../../pages/landing";
 import Profiles from "../../pages/profiles";
 import NotFound from "../../pages/user-not-found";
+import Artist from "../../pages/artists";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/:username",
     element: <Profiles />,
+  },
+  {
+    path: "/artists/:groupName",
+    element: <Artist />,
   },
   {
     path: "/user-not-found",

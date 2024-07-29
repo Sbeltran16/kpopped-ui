@@ -29,7 +29,12 @@ export default function SearchBar() {
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/${searchQuery}`);
+      const isUserSearch = /^[a-zA-Z0-9]+$/.test(searchQuery.trim());
+      if (isUserSearch) {
+        navigate(`/${searchQuery}`);
+      } else {
+        navigate(`/artists/${searchQuery}`);
+      }
     }
   };
 

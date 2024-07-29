@@ -8,7 +8,7 @@ const NavbarContainer = styled.div`
   align-items: center;
   padding: 1rem;
   background-color: white;
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 2px solid black;
 `;
 
 const NavbarLink = styled(Link)`
