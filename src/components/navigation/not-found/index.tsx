@@ -6,8 +6,6 @@ export default function UserNotFound() {
   return (
     <Container>
       <Message> Looks Like This User Does Not Exist !</Message>
-      <Typography>Try Searching for again? </Typography>
-      <SearchBar />
     </Container>
   );
 }

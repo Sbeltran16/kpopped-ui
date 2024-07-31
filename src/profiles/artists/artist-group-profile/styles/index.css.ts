@@ -23,9 +23,7 @@ const GroupTitles = styled(Typography)`
 const DataContainer = styled("div")`
   margin: 1rem 0;
   padding: 3rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+
   background-color: rgba(102, 153, 112, 0.2);
   @media (max-width: 600px) {
     padding: 1rem;

@@ -59,7 +59,7 @@ const GroupName = styled(Typography)`
   z-index: 1;
 
   @media (max-width: 600px) {
-    font-size: 2rem;
+    font-size: 3.2rem;
   }
 `;
 

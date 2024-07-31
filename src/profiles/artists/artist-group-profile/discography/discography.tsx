@@ -20,8 +20,8 @@ function GroupDiscographyData({ discography }: GroupDiscographyProps) {
                 image={album.cover_image}
                 alt={album.title}
                 style={{
-                  height: "200px",
-                  objectFit: "cover",
+                  height: "300px",
+                  objectFit: "contain",
                   borderRadius: "8px",
                 }}
               />

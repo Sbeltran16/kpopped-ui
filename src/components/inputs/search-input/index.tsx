@@ -16,7 +16,11 @@ type Suggestion = {
   username: string;
 };
 
-export default function SearchBar() {
+type SearchBarProps = {
+  searchType: string;
+};
+
+export default function SearchBar({ searchType }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const navigate = useNavigate();
 
@@ -29,8 +33,7 @@ export default function SearchBar() {
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (searchQuery.trim()) {
-      const isUserSearch = /^[a-zA-Z0-9]+$/.test(searchQuery.trim());
-      if (isUserSearch) {
+      if (searchType === "user") {
         navigate(`/${searchQuery}`);
       } else {
         navigate(`/artists/${searchQuery}`);
@@ -65,7 +68,7 @@ export default function SearchBar() {
           </ClearIconWrapper>
         )}
       </Search>
-      {suggestions && suggestions.length > 0 && (
+      {searchType === "user" && suggestions && suggestions.length > 0 && (
         <DropdownMenu>
           {suggestions.map((suggestion: Suggestion, index: number) => (
             <DropdownItem

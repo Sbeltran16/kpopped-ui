@@ -13,6 +13,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import { NavLink } from "react-router-dom";
 import SearchBar from "../../inputs/search-input";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 function handleLogout() {
   localStorage.removeItem("authToken");
@@ -22,6 +27,7 @@ function handleLogout() {
 export default function Navbar() {
   const { user } = useUser();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchType, setSearchType] = useState<string>("user");
   const searchRef = useRef<HTMLDivElement>(null);
 
   const toggleSearch = () => {
@@ -36,18 +42,21 @@ export default function Navbar() {
       setSearchOpen(false);
     }
   };
+  const handleSearchTypeChange = (event: SelectChangeEvent) => {
+    setSearchType(event.target.value as string);
+  };
 
-  useEffect(() => {
-    if (searchOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
+  // useEffect(() => {
+  //   if (searchOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //   } else {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [searchOpen]);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
   return (
     <NavbarContainer>
@@ -61,7 +70,24 @@ export default function Navbar() {
       <StyledLinkContainer ref={searchRef}>
         {searchOpen ? (
           <SearchBarWrapper>
-            <SearchBar />
+            <SearchBar searchType={searchType} />
+            <Box sx={{ minWidth: 120, marginLeft: 2 }}>
+              <FormControl fullWidth>
+                <InputLabel id="search-type-select-label">
+                  Search Type
+                </InputLabel>
+                <Select
+                  labelId="search-type-select-label"
+                  id="search-type-select"
+                  value={searchType}
+                  label="Search Type"
+                  onChange={handleSearchTypeChange}
+                >
+                  <MenuItem value="user">User</MenuItem>
+                  <MenuItem value="group">Artists</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </SearchBarWrapper>
         ) : (
           <SearchButton onClick={toggleSearch}>
