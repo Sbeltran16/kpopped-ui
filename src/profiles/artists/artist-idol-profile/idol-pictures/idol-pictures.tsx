@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { ImageList, Button } from "@mui/material";
+import { ImageList } from "@mui/material";
 import {
   StyledButton,
   StyledImage,
   StyledImageListItem,
-} from "./latest-pictures.css";
-import { GroupTitles } from "../styles/index.css";
+} from "../../artist-group-profile/group-pictures/latest-pictures.css";
+import { GroupTitles } from "../../artist-group-profile/styles/index.css";
 
-interface GroupPicturesProps {
-  groupImages: string[];
+interface IdolPicturesProps {
+  idolImages: string[];
 }
 
-function GroupPicturesData({ groupImages }: GroupPicturesProps) {
+function IdolPicturesData({ idolImages = [] }: IdolPicturesProps) {
   const [visibleImages, setVisibleImages] = useState(5);
 
   const handleShowMore = () => {
@@ -20,9 +20,9 @@ function GroupPicturesData({ groupImages }: GroupPicturesProps) {
 
   return (
     <>
-      <GroupTitles>Group Images</GroupTitles>
+      <GroupTitles>Idol Images</GroupTitles>
       <ImageList sx={{ width: "100%", height: "auto" }} cols={5} gap={16}>
-        {groupImages.slice(0, visibleImages).map((image, index) => (
+        {idolImages.slice(0, visibleImages).map((image, index) => (
           <StyledImageListItem key={index}>
             <StyledImage
               src={`${image}?w=500&h=500&fit=crop&auto=format`}
@@ -33,7 +33,7 @@ function GroupPicturesData({ groupImages }: GroupPicturesProps) {
           </StyledImageListItem>
         ))}
       </ImageList>
-      {visibleImages < groupImages.length && (
+      {visibleImages < idolImages.length && (
         <StyledButton variant="contained" onClick={handleShowMore}>
           Show More
         </StyledButton>
@@ -42,4 +42,4 @@ function GroupPicturesData({ groupImages }: GroupPicturesProps) {
   );
 }
 
-export { GroupPicturesData };
+export { IdolPicturesData };

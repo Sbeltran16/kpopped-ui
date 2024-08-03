@@ -5,7 +5,7 @@ export const MainContent = styled.div`
   padding: 1rem;
 
   @media (max-width: 768px) {
-    margin: 0;
+    margin-left: 0;
     padding: 0;
   }
 `;

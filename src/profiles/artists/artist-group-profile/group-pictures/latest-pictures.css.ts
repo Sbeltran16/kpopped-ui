@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ImageListItem } from "@mui/material";
+import { ImageListItem, Button } from "@mui/material";
 
 const StyledImage = styled("img")`
   width: 100%;
@@ -14,4 +14,14 @@ const StyledImageListItem = styled(ImageListItem)`
   overflow: hidden;
 `;
 
-export { StyledImage, StyledImageListItem };
+const StyledButton = styled(Button)`
+  justify-content: center;
+  background-color: #99668f;
+  color: white;
+  border-radius: 5rem;
+  &:hover {
+    background-color: #8c4f73;
+  }
+`;
+
+export { StyledImage, StyledImageListItem, StyledButton };

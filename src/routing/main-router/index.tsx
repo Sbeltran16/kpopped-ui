@@ -13,6 +13,7 @@ import Landing from "../../pages/landing";
 import Profiles from "../../pages/profiles";
 import NotFound from "../../pages/user-not-found";
 import Artist from "../../pages/artists";
+import Idol from "../../pages/idols";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/artists/:groupName",
     element: <Artist />,
+  },
+  {
+    path: "/artists/idol/:idolName",
+    element: <Idol />,
   },
   {
     path: "/user-not-found",

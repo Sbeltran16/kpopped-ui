@@ -20,6 +20,7 @@ function ArtistPage() {
         try {
           const formattedName = artistName.trim().replace(/\s+/g, "-");
           const data = await fetchGroupData(formattedName);
+          console.log(data);
           if (data) {
             setGroupData(data);
             setError(null);
