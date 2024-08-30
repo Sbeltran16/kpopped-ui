@@ -24,7 +24,7 @@ function ProfileHeader() {
   const { data: followStatusData } = useFollowStatus(username || "");
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const baseUrl = "http://localhost:3001";
+  const baseUrl = process.env.REACT_APP_HOST || "http://localhost:3001";
 
   useEffect(() => {
     if (followStatusData) {
