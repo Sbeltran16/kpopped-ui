@@ -5,7 +5,6 @@ const DiscographyContainer = styled("div")`
   padding: 0 2rem;
 
   @media (max-width: 600px) {
-    padding: 0 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

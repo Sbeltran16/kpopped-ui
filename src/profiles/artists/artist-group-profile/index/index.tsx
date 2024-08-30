@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import { fetchGroupData } from "../../../../api/artists/group-data-api";
 import { GroupDiscographyData } from "../discography/discography";
 import { GroupMembersData } from "../members/members";
-import { GroupPicturesData } from "../group-pictures/latest-pictures";
+import GroupPicturesData from "../group-pictures/latest-pictures";
 import { GroupStatsData } from "../group-stats/group-stats";
 import { GroupIntroData } from "../group-intro/group-intro";
 import { DataContainer, MainContainer } from "../styles/index.css";

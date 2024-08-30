@@ -6,8 +6,7 @@ const RunwayContainer = styled.div`
   border-top: none;
   height: 100vh;
   margin: 0 auto;
-  max-width: 550px;
-  padding: 1rem;
+  max-width: 650px;
   overflow-y: auto;
 
   @media (max-width: 768px) {

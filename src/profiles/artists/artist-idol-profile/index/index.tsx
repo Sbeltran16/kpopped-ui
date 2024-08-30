@@ -9,7 +9,7 @@ import {
 import { IdolIntroData } from "../idol-intro/idol-intro";
 import { IdolDiscographyData } from "../discography/discography";
 import { IdolStatsData } from "../idol-stats/idol-stats";
-import { IdolPicturesData } from "../idol-pictures/idol-pictures";
+import IdolPicturesData from "../idol-pictures/idol-pictures";
 
 function IdolPage() {
   const { idolName } = useParams<{ idolName: string }>();

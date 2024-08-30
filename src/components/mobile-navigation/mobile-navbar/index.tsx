@@ -3,7 +3,6 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Drawer,
   List,
   ListItem,
   ListItemText,
@@ -83,7 +82,10 @@ export default function MobileNavbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" style={{ flexGrow: 1, textAlign: "center" }}>
+          <Typography
+            variant="h6"
+            style={{ flexGrow: 1, textAlign: "center", marginLeft: "-1.1rem" }}
+          >
             <span style={{ color: "#99668F" }}>K</span>popped
             <span style={{ color: "#669970" }}>!</span>
           </Typography>

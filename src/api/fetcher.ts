@@ -8,7 +8,7 @@ export default function fetcher(
   return fetch(url, {
     ...init,
     headers: {
-      "Content-Type": "application/json",
+      ...(init?.method !== "PATCH" && { "Content-Type": "application/json" }),
       ...(authHeader || undefined),
       ...init?.headers,
     },

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ImageList } from "@mui/material";
+import { ImageList, Button, useMediaQuery, useTheme } from "@mui/material";
 import {
   StyledButton,
   StyledImage,
@@ -13,6 +13,8 @@ interface IdolPicturesProps {
 
 function IdolPicturesData({ idolImages = [] }: IdolPicturesProps) {
   const [visibleImages, setVisibleImages] = useState(5);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleShowMore = () => {
     setVisibleImages((prevVisibleImages) => prevVisibleImages + 5);
@@ -21,13 +23,17 @@ function IdolPicturesData({ idolImages = [] }: IdolPicturesProps) {
   return (
     <>
       <GroupTitles>Idol Images</GroupTitles>
-      <ImageList sx={{ width: "100%", height: "auto" }} cols={5} gap={16}>
+      <ImageList
+        sx={{ width: "100%", height: "auto" }}
+        cols={isMobile ? 1 : 5}
+        gap={16}
+      >
         {idolImages.slice(0, visibleImages).map((image, index) => (
           <StyledImageListItem key={index}>
             <StyledImage
               src={`${image}?w=500&h=500&fit=crop&auto=format`}
               srcSet={`${image}?w=500&h=500&fit=crop&auto=format&dpr=2 2x`}
-              alt={`Group Image ${index + 1}`}
+              alt={`Idol Image ${index + 1}`}
               loading="lazy"
             />
           </StyledImageListItem>
@@ -42,4 +48,4 @@ function IdolPicturesData({ idolImages = [] }: IdolPicturesProps) {
   );
 }
 
-export { IdolPicturesData };
+export default IdolPicturesData;

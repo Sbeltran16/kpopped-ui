@@ -12,7 +12,7 @@ function GroupDiscographyData({ discography }: GroupDiscographyProps) {
     <DiscographyContainer>
       <GroupTitles>Latest Discography</GroupTitles>
       {discography.length > 0 && (
-        <Grid container spacing={4} style={{ marginTop: "20px" }}>
+        <Grid container spacing={4}>
           {discography.map((album, index) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
               <CardMedia

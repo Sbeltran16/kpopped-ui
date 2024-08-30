@@ -21,10 +21,10 @@ const GroupTitles = styled(Typography)`
 `;
 
 const DataContainer = styled("div")`
-  margin: 1rem 0;
+  margin: 0 0 1rem;
   padding: 3rem;
-
   background-color: rgba(102, 153, 112, 0.2);
+
   @media (max-width: 600px) {
     padding: 1rem;
   }

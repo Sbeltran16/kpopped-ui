@@ -10,7 +10,11 @@ export const StyledForm = styled.form`
 
 export const PostField = styled(TextField)`
   margin-bottom: 1rem;
-  background-color: #e9e9e9;
+  background-color: white;
+  .MuiInputBase-root {
+    padding: 2rem;
+    background-color: white;
+  }
 `;
 
 export const PostButton = styled(Button)`

@@ -4,7 +4,7 @@ import { ImageListItem, Button } from "@mui/material";
 const StyledImage = styled("img")`
   width: 100%;
   height: 100%;
-  border-radius: 30%;
+  border-radius: 20%;
   object-fit: cover;
   object-position: center;
 `;

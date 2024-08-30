@@ -1,14 +1,17 @@
 import styled from "@emotion/styled";
 
 const MembersContainer = styled("div")`
+  align-items: flex-start;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-evenly;
   margin: 1rem;
-  gap: 10px;
   width: 100%;
-  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    margin: auto;
+  }
 `;
 
 const MemberCard = styled("div")`
