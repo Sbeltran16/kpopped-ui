@@ -22,7 +22,9 @@ export default function MyPostFeed() {
 
   return (
     <MyPostFeedWrapper>
-      <Typography variant="h5">For You</Typography>
+      <Typography variant="h5" style={{ textAlign: "center" }}>
+        For You
+      </Typography>
       {allPosts.map((post) => (
         <PostCard data={post} key={post.id} />
       ))}

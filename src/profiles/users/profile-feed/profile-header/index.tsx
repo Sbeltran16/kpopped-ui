@@ -24,7 +24,7 @@ function ProfileHeader() {
   const { data: followStatusData } = useFollowStatus(username || "");
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const baseUrl = process.env.REACT_APP_HOST || "http://localhost:3001";
+  const baseUrl = "http://localhost:3001";
 
   useEffect(() => {
     if (followStatusData) {
@@ -74,9 +74,9 @@ function ProfileHeader() {
       <UserInfoContainer>
         <StyledUsernameContainer>
           <StyledUsername>{user.username}</StyledUsername>
-          <StyledEditButton variant="outlined" onClick={handleOpenModal}>
+          {/* <StyledEditButton variant="outlined" onClick={handleOpenModal}>
             Edit Profile
-          </StyledEditButton>
+          </StyledEditButton> */}
         </StyledUsernameContainer>
       </UserInfoContainer>
       <StyledFollowButtonContainer>

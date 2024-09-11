@@ -5,6 +5,8 @@ const FooterContainer = styled.footer`
   text-align: center;
   position: relative;
   width: 100%;
+  bottom: 0;
+  margin-bottom: 0;
 
   @media (max-width: 768px) {
     display: flex;

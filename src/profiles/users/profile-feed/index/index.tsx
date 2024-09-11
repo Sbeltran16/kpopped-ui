@@ -45,7 +45,9 @@ export default function ProfileFeed() {
   return (
     <>
       <ProfileFeedWrapper>
-        <Typography variant="h6">Posts</Typography>
+        <Typography variant="h6" style={{ textAlign: "center" }}>
+          Posts
+        </Typography>
         {user.posts.map((post: Post) => (
           <PostCard data={{ ...post, username: user.username }} key={post.id} />
         ))}
