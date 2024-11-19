@@ -19,7 +19,6 @@
     "axios": "^1.7.2",
     "date-fns": "^3.6.0",
     "jwt-decode": "^4.0.0",
-    "kpoppingapi-warpper": "^1.2.65",
     "react": "^18.2.0",
     "react-aws-s3": "^1.5.0",
     "react-dom": "^18.2.0",
