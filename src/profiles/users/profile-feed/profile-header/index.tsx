@@ -16,6 +16,7 @@ import {
 import FollowButton from "../../../../components/inputs/follow-button";
 import { Modal, Typography } from "@mui/material";
 import ProfileUpdateForm from "../../../../components/forms/profile-update";
+import useMe from "../../../../api/users/hooks/use-me";
 
 function ProfileHeader() {
   const { username } = useParams();
@@ -23,6 +24,7 @@ function ProfileHeader() {
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
   const { data: followStatusData } = useFollowStatus(username || "");
   const [isModalOpen, setModalOpen] = useState(false);
+  const { data: me } = useMe();
 
   const baseUrl = "http://localhost:3001";
 
@@ -41,6 +43,7 @@ function ProfileHeader() {
   }
 
   const user = data?.data;
+  const isCurrentUser = me?.username === username;
 
   const profileBannerUrl = user.profile_banner_url
     ? `${baseUrl}${user.profile_banner_url}`
@@ -74,18 +77,21 @@ function ProfileHeader() {
       <UserInfoContainer>
         <StyledUsernameContainer>
           <StyledUsername>{user.username}</StyledUsername>
-          {/* <StyledEditButton variant="outlined" onClick={handleOpenModal}>
-            Edit Profile
-          </StyledEditButton> */}
+          {isCurrentUser ? (
+            <StyledEditButton variant="outlined" onClick={handleOpenModal}>
+              Edit Profile
+            </StyledEditButton>
+          ) : (
+            <StyledFollowButtonContainer>
+              <FollowButton
+                isFollowing={isFollowing}
+                followeeId={user.id}
+                onFollowChange={setIsFollowing}
+              />
+            </StyledFollowButtonContainer>
+          )}
         </StyledUsernameContainer>
       </UserInfoContainer>
-      <StyledFollowButtonContainer>
-        <FollowButton
-          isFollowing={isFollowing}
-          followeeId={user.id}
-          onFollowChange={setIsFollowing}
-        />
-      </StyledFollowButtonContainer>
       <StyledBioContainer>
         <Typography style={{ fontSize: "15px" }}>{user.bio}</Typography>
       </StyledBioContainer>
